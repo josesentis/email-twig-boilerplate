@@ -5,6 +5,7 @@ import size from 'gulp-size';
 import twig from 'gulp-twig';
 
 import { routes } from '../config';
+import data from '../../src/data';
 
 const MARKUP_FILES = `${routes.src.views}/**/*`;
 
