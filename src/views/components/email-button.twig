@@ -2,6 +2,7 @@
 {% set padding = emailConfig.button.padding|default('8px 10px 6px') %}
 {% set buttonRadius = emailConfig.button.radius|default(false) %}
 {% set rounded = buttonRadius ? '-webkit-border-radius: ' ~ buttonRadius ~ '; -moz-border-radius: ' ~ buttonRadius ~ '; border-radius: ' ~ buttonRadius ~ ';' : '' %}
+
 <table border="0" cellspacing="0" cellpadding="5">
     <tr>
         <td align="center" style="{{ rounded }} background-color: {{ backgroundColor }};" bgcolor="{{ backgroundColor }}">

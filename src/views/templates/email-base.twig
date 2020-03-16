@@ -1,9 +1,13 @@
-{% import 'helpers/email-macros.html.twig' as macros %}
+{% import 'helpers/email-macros.twig' as macros %}
 
-{% set imagesPath = base_url ~ theme_path ~ '/img/email/' %}
+{% set imagesPath = 'img/' %}
 {% set fontFamily = '-apple-system, system-ui, BlinkMacSystemFont, Arial, sans-serif' %}
 
 {% set emailConfig = {
+    config: {
+        companyName: 'Sample name',
+        siteUrl: '#'
+    },
     background: {
         base: '#ffffff',
         content: '#ffffff'
@@ -24,7 +28,6 @@
         width: 600
     },
     header: {
-        link: base_url,
         image: {
             src: imagesPath ~ 'logo.jpg',
             width: 600,
@@ -34,29 +37,22 @@
     },
     footer: {
         background: "#F7F7F7",
-        link: base_url,
-        image: {
-            src: imagesPath ~ 'curve_footer.jpg',
-            height: 59,
-            width: 600,
-            alt: ''
-        },
         networkSize: 32,
         networks: [
             {
                 title: 'Facebook',
-                image: imagesPath ~ 'social-facebook.png',
-                link: 'https://www.facebook.com/BlemilyBlevit/'
+                image: imagesPath ~ 'facebook.png',
+                link: '#'
             },
             {
                 title: 'Instagram',
-                image: imagesPath ~ 'social-instagram.png',
-                link: 'https://www.instagram.com/blemilyblevit/'
+                image: imagesPath ~ 'instagram.png',
+                link: '#'
             },
             {
                 title: 'Youtube',
-                image: imagesPath ~ 'social-youtube.png',
-                link: 'https://www.youtube.com/user/laboratoriosordesa/'
+                image: imagesPath ~ 'youtube.png',
+                link: '#'
             }
         ]
     },
@@ -80,11 +76,11 @@
         <meta name="format-detection" content="date=no">
         <meta name="format-detection" content="telephone=no">
         <title>{% block title %}{% endblock %}</title>
-        {% include 'components/_emailstyles.html.twig' %}
+        {% include 'components/email-styles.twig' %}
     </head>
     <body style="margin:0; padding:0; width: 100%;" bgcolor="{{ emailConfig.background.base }}">
         {% block preview %}{% endblock %}
-        {% include 'components/_emailheader.html.twig' %}
+        {% include 'components/email-header.twig' %}
         <table role="presentation" class="w100pc" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="{{ contentBackground }}" style="width: {{ emailConfig.container.width }}px;">
             <tr>
                 {% if emailConfig.container.padding %}
@@ -110,6 +106,6 @@
                 {% endif %}
             </tr>
         </table>
-        {% include 'components/_emailfooter.html.twig' %}
+        {% include 'components/email-footer.twig' %}
     </body>
 </html>

@@ -1,26 +1,26 @@
-{% extends '_emailregister-base.html.twig' %}
+{% extends 'templates/email-base.twig' %}
 
-{% import 'helpers/email-macros.html.twig' as macros %}
+{% import 'helpers/email-macros.twig' as macros %}
 
 {% block title %}{{ fields.title }}{% endblock %}
 
 {% block body %}
-    {{ macros.title('form.register.email.title'|trans, emailConfig) }}
+    {{ macros.title('Email title', emailConfig) }}
     {{ macros.spaceRow(30) }}
-    {% set salute = '¡' ~ 'Hello'|trans ~ ', ' ~ fields.name ~ '!' %}
+    {% set salute = '¡Hola Sample name!' %}
     {{ macros.text(salute, emailConfig) }}
     {{ macros.spaceRow(14) }}
-    {{ macros.text('form.register.email.text'|trans, emailConfig) }}
+    {{ macros.text("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.", emailConfig) }}
     {{ macros.spaceRow(40) }}
     <tr>
         <td align="center">
-            {% include 'components/_emailbutton.html.twig' with {
-                link: fields.oneTimeLoginUrl,
-                label: 'form.register.email.cta'|trans
+            {% include 'components/email-button.twig' with {
+                link: '#',
+                label: 'Click here!'
             } %}
         </td>
     </tr>
     {{ macros.spaceRow(50) }}
-    {{ macros.note('form.register.email.legal'|trans, emailConfig) }}
+    {{ macros.note('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', emailConfig) }}
     {{ macros.spaceRow(56) }}
 {% endblock %}

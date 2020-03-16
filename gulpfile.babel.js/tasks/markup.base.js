@@ -10,7 +10,7 @@ import data from '../../src/data';
 const MARKUP_FILES = `${routes.src.views}/**/*`;
 
 const markup = () => gulp
-    .src(`${routes.src.views}/pages/**/*.twig`)
+    .src(`${routes.src.views}/*.twig`)
     .pipe(plumber())
     .pipe(twig({
       base: routes.src.views,
@@ -18,7 +18,7 @@ const markup = () => gulp
       data
     }))
     .pipe(htmlmin({
-      collapseWhitespace: true,
+    //   collapseWhitespace: true,
       minifyCSS: true
     }))
     .pipe(plumber.stop())
