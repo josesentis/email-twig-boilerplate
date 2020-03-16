@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import htmlmin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
 import size from 'gulp-size';
 import twig from 'gulp-twig';
@@ -16,10 +15,6 @@ const markup = () => gulp
       base: routes.src.views,
       cache: false,
       data
-    }))
-    .pipe(htmlmin({
-    //   collapseWhitespace: true,
-      minifyCSS: true
     }))
     .pipe(plumber.stop())
     .pipe(size())
