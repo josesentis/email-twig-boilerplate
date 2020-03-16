@@ -1,0 +1,34 @@
+{% macro previewText(preview, config) %}{% spaceless %}
+{% if preview is defined and preview != '' %}
+<div style="display: none; font-size: 1px; color:{{ config.background.content }}; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    {{ preview }}
+    {% for i in 1.. (300 - preview|length) %}·{% endfor %}
+</div>
+{% endif %}
+{% endspaceless %}{% endmacro %}
+
+{% macro text(text, config, styles = '', type = 'regular') %}{% spaceless %}
+    <tr>
+        <td style="{{ config.font[type] }}{{ styles }}">{{ text|raw }}</td>
+    </tr>
+{% endspaceless %}{% endmacro %}
+
+{% macro title(text, config, styles = '') %}{% spaceless %}
+    {% import _self as macros %}
+    {{ macros.text(text, config, styles, 'title') }}
+{% endspaceless %}{% endmacro %}
+
+{% macro note(text, config, styles = '') %}{% spaceless %}
+    {% import _self as macros %}
+    {{ macros.text(text, config, styles, 'note') }}
+{% endspaceless %}{% endmacro %}
+
+{% macro spaceRow(height, colspan, class) %}{% spaceless %}
+    <tr>
+        <td{% if class %} class="{{ class }}"{% endif %} height="{{ height }}" {% if colspan %} colspan="{{ colspan }}"{% endif %} style="height: {{ height }}px; font-size: 1px; line-height: 1;">&nbsp;</td>
+    </tr>
+{% endspaceless %}{% endmacro %}
+
+{% macro spaceCell(width, class) %}{% spaceless %}
+    <td{% if class %} class="{{ class }}"{% endif %} width="{{ width }}" style="font-size: 1px; line-height: 1; width: {{ width }}px;">&nbsp;</td>
+{% endspaceless %}{% endmacro %}

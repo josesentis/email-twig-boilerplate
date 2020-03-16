@@ -1,0 +1,19 @@
+{% set backgroundColor = emailConfig.button.background %}
+{% set padding = emailConfig.button.padding|default('8px 10px 6px') %}
+{% set buttonRadius = emailConfig.button.radius|default(false) %}
+{% set rounded = buttonRadius ? '-webkit-border-radius: ' ~ buttonRadius ~ '; -moz-border-radius: ' ~ buttonRadius ~ '; border-radius: ' ~ buttonRadius ~ ';' : '' %}
+<table border="0" cellspacing="0" cellpadding="5">
+    <tr>
+        <td align="center" style="{{ rounded }} background-color: {{ backgroundColor }};" bgcolor="{{ backgroundColor }}">
+            <table border="0" cellspacing="0" cellpadding="0" style="{{ rounded }} background-color: {{ backgroundColor }};" bgcolor="{{ backgroundColor }}">
+                <tr>
+                    <td style="{{ rounded }} padding: {{ padding }}; background-color: {{ backgroundColor }}; color: {{ emailConfig.button.color }}; {{ emailConfig.button.styles }}" bgcolor="{{ backgroundColor }}">
+                        <a class="button" href="{{ link }}" style="background-color: {{ backgroundColor }}; color: {{ emailConfig.button.color }}; text-decoration: none; {{ emailConfig.button.styles }}">
+                            {{ label }}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

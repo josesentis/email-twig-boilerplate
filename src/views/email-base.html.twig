@@ -1,0 +1,115 @@
+{% import 'helpers/email-macros.html.twig' as macros %}
+
+{% set imagesPath = base_url ~ theme_path ~ '/img/email/' %}
+{% set fontFamily = '-apple-system, system-ui, BlinkMacSystemFont, Arial, sans-serif' %}
+
+{% set emailConfig = {
+    background: {
+        base: '#ffffff',
+        content: '#ffffff'
+    },
+    font: {
+        color: '#333333',
+        family: fontFamily,
+        regular: 'font-family: ' ~ fontFamily ~ '; font-size: 16px; color: #333333; line-height: 27px;',
+        title: 'font-family: ' ~ fontFamily ~ '; font-size: 30px; font-weight: 700; color: #333333; line-height:36px;',
+        note: 'font-family: ' ~ fontFamily ~ '; font-size: 14px; color: #A3A3A3; line-height: 17px;'
+    },
+    link: {
+        color: '#f7875f',
+        styles: 'font-family: ' ~ fontFamily ~ '; font-size: inherit; color: #f7875f; line-height: inherit; text-decoration: none;'
+    },
+    container: {
+        padding: 25,
+        width: 600
+    },
+    header: {
+        link: base_url,
+        image: {
+            src: imagesPath ~ 'logo.jpg',
+            width: 600,
+            height: 95,
+            alt: ''
+        }
+    },
+    footer: {
+        background: "#F7F7F7",
+        link: base_url,
+        image: {
+            src: imagesPath ~ 'curve_footer.jpg',
+            height: 59,
+            width: 600,
+            alt: ''
+        },
+        networkSize: 32,
+        networks: [
+            {
+                title: 'Facebook',
+                image: imagesPath ~ 'social-facebook.png',
+                link: 'https://www.facebook.com/BlemilyBlevit/'
+            },
+            {
+                title: 'Instagram',
+                image: imagesPath ~ 'social-instagram.png',
+                link: 'https://www.instagram.com/blemilyblevit/'
+            },
+            {
+                title: 'Youtube',
+                image: imagesPath ~ 'social-youtube.png',
+                link: 'https://www.youtube.com/user/laboratoriosordesa/'
+            }
+        ]
+    },
+    button: {
+        background: '#f7875f',
+        color: '#ffffff',
+        padding: '8px 10px 6px',
+        radius: '10px',
+        styles: 'font-family: ' ~ fontFamily ~ '; font-size: 16px; letter-spacing: 2.54px; font-weight: bold; line-height: 19px; text-transform: uppercase;'
+    }
+} %}
+{% set contentWidth = emailConfig.container.padding ? emailConfig.container.width - (emailConfig.container.padding * 2) : emailConfig.container.width %}
+{% set contentBackground = emailConfig.background.content %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="format-detection" content="date=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>{% block title %}{% endblock %}</title>
+        {% include 'components/_emailstyles.html.twig' %}
+    </head>
+    <body style="margin:0; padding:0; width: 100%;" bgcolor="{{ emailConfig.background.base }}">
+        {% block preview %}{% endblock %}
+        {% include 'components/_emailheader.html.twig' %}
+        <table role="presentation" class="w100pc" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="{{ contentBackground }}" style="width: {{ emailConfig.container.width }}px;">
+            <tr>
+                {% if emailConfig.container.padding %}
+                    {{ macros.spaceCell(emailConfig.container.padding) }}
+                {% endif %}
+                <td width="{{ contentWidth }}" align="center">
+                    <!--[if (mso)|(IE)]>
+                    <table width="{{ contentWidth }}" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ contentBackground }}">
+                        <tr>
+                            <td align="left">
+                    <![endif]-->
+                    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="{{ contentWidth }}" bgcolor="{{ contentBackground }}" style="width: {{ contentWidth }}px; max-width: {{ contentWidth }}px; {{ contentStyle }}">
+                        {% block body %}{% endblock %}
+                    </table>
+                    <!--[if (mso)|(IE)]>
+                            </td>
+                        </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+                {% if emailConfig.container.padding %}
+                    {{ macros.spaceCell(emailConfig.container.padding) }}
+                {% endif %}
+            </tr>
+        </table>
+        {% include 'components/_emailfooter.html.twig' %}
+    </body>
+</html>

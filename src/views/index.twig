@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html class="no-js" language="es">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gulp Boilerplate example page</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style type="text/css">
-            {% block crp %}
-                {% include 'crp/default.min.css' %}
-            {% endblock %}
-        </style>
-    </head>
-    <body>
-        {% include 'components/header.twig' %}
-        <main id="main">
-            {% include 'components/example.twig' %}
-        </main>
-        {% include 'components/footer.twig' %}
-        <link rel="stylesheet" href="css/styles.min.css" />
-        <script src="js/app.min.js" async defer></script>
-    </body>
-</html>
+{% extends '_emailregister-base.html.twig' %}
 
+{% import 'helpers/email-macros.html.twig' as macros %}
+
+{% block title %}{{ fields.title }}{% endblock %}
+
+{% block body %}
+    {{ macros.title('form.register.email.title'|trans, emailConfig) }}
+    {{ macros.spaceRow(30) }}
+    {% set salute = '¡' ~ 'Hello'|trans ~ ', ' ~ fields.name ~ '!' %}
+    {{ macros.text(salute, emailConfig) }}
+    {{ macros.spaceRow(14) }}
+    {{ macros.text('form.register.email.text'|trans, emailConfig) }}
+    {{ macros.spaceRow(40) }}
+    <tr>
+        <td align="center">
+            {% include 'components/_emailbutton.html.twig' with {
+                link: fields.oneTimeLoginUrl,
+                label: 'form.register.email.cta'|trans
+            } %}
+        </td>
+    </tr>
+    {{ macros.spaceRow(50) }}
+    {{ macros.note('form.register.email.legal'|trans, emailConfig) }}
+    {{ macros.spaceRow(56) }}
+{% endblock %}

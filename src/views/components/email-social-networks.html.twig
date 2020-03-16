@@ -1,0 +1,13 @@
+{% extends 'templates/email-container.html.twig' %}
+
+{% block content %}
+    {% for network in networks %}
+        <tr>
+            <td align="left" valign="middle"{% if not loop.last %}  style="padding-right: 8px;"{% endif %}>
+                <a href="{{ network.link }}" title="{{ network.title }}" target="_blank" rel="noreferrer noopener">
+                    <img src="{{ network.image }}" width="{{ emailConfig.footer.networkSize }}" height="{{ emailConfig.footer.networkSize }}" border="0" alt="{{ network.title }}" style="display:block; {{ emailConfig.font.regular }}">
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
