@@ -9,7 +9,7 @@
         siteUrl: '#'
     },
     background: {
-        base: '#ffffff',
+        base: '#f7f7f7',
         content: '#ffffff'
     },
     font: {
@@ -30,13 +30,13 @@
     header: {
         image: {
             src: imagesPath ~ 'logo.jpg',
-            width: 600,
-            height: 95,
+            width: 550,
+            height: 87,
             alt: ''
         }
     },
     footer: {
-        background: "#F7F7F7",
+        background: "#ffffff",
         networkSize: 32,
         networks: [
             {
@@ -65,7 +65,6 @@
     }
 } %}
 {% set contentWidth = emailConfig.container.padding ? emailConfig.container.width - (emailConfig.container.padding * 2) : emailConfig.container.width %}
-{% set contentBackground = emailConfig.background.content %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -81,18 +80,18 @@
     <body style="margin:0; padding:0; width: 100%;" bgcolor="{{ emailConfig.background.base }}">
         {% block preview %}{% endblock %}
         {% include 'components/email-header.twig' %}
-        <table role="presentation" class="w100pc" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="{{ contentBackground }}" style="width: {{ emailConfig.container.width }}px;">
+        <table role="presentation" class="w100pc" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" bgcolor="{{ emailConfig.background.content }}" style="width: {{ emailConfig.container.width }}px;">
             <tr>
                 {% if emailConfig.container.padding %}
                     {{ macros.spaceCell(emailConfig.container.padding) }}
                 {% endif %}
                 <td width="{{ contentWidth }}" align="center">
                     <!--[if (mso)|(IE)]>
-                    <table width="{{ contentWidth }}" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ contentBackground }}">
+                    <table width="{{ contentWidth }}" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ emailConfig.background.content }}">
                         <tr>
                             <td align="left">
                     <![endif]-->
-                    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="{{ contentWidth }}" bgcolor="{{ contentBackground }}" style="width: {{ contentWidth }}px; max-width: {{ contentWidth }}px; {{ contentStyle }}">
+                    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="{{ contentWidth }}" bgcolor="{{ emailConfig.background.content }}" style="width: {{ contentWidth }}px; max-width: {{ contentWidth }}px; {{ contentStyle }}">
                         {% block body %}{% endblock %}
                     </table>
                     <!--[if (mso)|(IE)]>

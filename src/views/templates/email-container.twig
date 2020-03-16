@@ -2,7 +2,7 @@
 
 {% set class = 'none' %}
 
-<table role="presentation" class="w100pc {{ class }}" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" style="width: {{ emailConfig.container.width }}px; {% block containerStyle %} bgcolor="{{ contentBackground }}" {% endblock %}">
+<table role="presentation" class="w100pc {{ class }}" width="{{ emailConfig.container.width }}" align="center" border="0" cellpadding="0" cellspacing="0" style="width: {{ emailConfig.container.width }}px;" {% block containerStyle %} bgcolor="{{ emailConfig.background.content }}" {% endblock %}">
     {% block containerHeader %}{% endblock %}
     <tr>
         {% if emailConfig.container.padding %}
@@ -10,11 +10,11 @@
         {% endif %}
         <td width="{{ contentWidth }}" align="center">
             <!--[if (mso)|(IE)]>
-            <table width="{{ contentWidth }}" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ contentBackground }}">
+            <table width="{{ contentWidth }}" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ emailConfig.background.content }}">
                 <tr>
                     <td align="left">
             <![endif]-->
-            <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="{{ contentWidth }}"{% block contentStyle %} bgcolor="{{ contentBackground }}" {% endblock %}>
+            <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="{{ contentWidth }}"{% block contentStyle %} bgcolor="{{ emailConfig.background.content }}" {% endblock %}>
                 {% block content %}{% endblock %}
             </table>
             <!--[if (mso)|(IE)]>

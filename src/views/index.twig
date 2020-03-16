@@ -6,7 +6,7 @@
 
 {% block body %}
     {{ macros.title('Email title', emailConfig) }}
-    {{ macros.spaceRow(30) }}
+    {{ macros.spaceRow(40) }}
     {% set salute = '¡Hola Sample name!' %}
     {{ macros.text(salute, emailConfig) }}
     {{ macros.spaceRow(14) }}
@@ -20,7 +20,7 @@
             } %}
         </td>
     </tr>
-    {{ macros.spaceRow(50) }}
+    {{ macros.spaceRow(40) }}
     {{ macros.note('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', emailConfig) }}
-    {{ macros.spaceRow(56) }}
+    {{ macros.spaceRow(25) }}
 {% endblock %}

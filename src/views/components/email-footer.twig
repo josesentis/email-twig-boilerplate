@@ -4,6 +4,7 @@
 
 {% block contentStyle %} bgcolor="{{ emailConfig.footer.background }}" {% endblock %}
 {% block content %}
+    {{ macros.spaceRow(25, 3) }}
     <tr>
         <td align="center" width="500">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="{{ emailConfig.footer.background }}">
@@ -12,11 +13,11 @@
                         {% include 'components/email-social-networks.twig' %}
                     </td>
                 </tr>
-                {{ macros.spaceRow(25) }}
+                {{ macros.spaceRow(20) }}
                 {% set copyright = 'Copyright © ' ~ emailConfig.config.companyName ~ ' ' ~ 'now'|date('Y') %}
                 {{ macros.note(copyright, emailConfig, 'text-align: center; padding: 0 25px;') }}
             </table>
         </td>
     </tr>
-    {{ macros.spaceRow(40, 3) }}
+    {{ macros.spaceRow(25, 3) }}
 {% endblock %}
