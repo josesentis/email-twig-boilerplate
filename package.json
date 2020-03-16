@@ -38,6 +38,7 @@
     "start": "gulp"
   },
   "dependencies": {
-    "babelify": "^10.0.0"
+    "babelify": "^10.0.0",
+    "npm-update": "^2.1.0"
   }
 }
