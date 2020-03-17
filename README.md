@@ -17,5 +17,6 @@ $ yarn start / npm run start
 
 - `src/views` - Twig Files. Gulp compiles twigs found in the root folder.
 - `src/assets/images` - Original image asset files
+- `src/assets/data` - Javascript file with data. This data is injected to twigjs through gulp.
 - `dist/` - Generated html file
 - `dist/img` - Minified image assets
